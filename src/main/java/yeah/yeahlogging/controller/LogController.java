@@ -15,6 +15,7 @@ public class LogController {
 
     private final LogService logService;
 
+    @CrossOrigin(origins = {"https://sonbal.vercel.app", "http://localhost:3000"})
     @PostMapping("/v1/log/{uuid}")
     public ResponseEntity<String> saveLog(
             @PathVariable String uuid,
