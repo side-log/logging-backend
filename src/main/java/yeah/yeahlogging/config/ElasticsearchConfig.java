@@ -7,6 +7,8 @@ import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfigurat
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.elasticsearch.support.HttpHeaders;
 
+import java.time.Duration;
+
 @Configuration
 @EnableElasticsearchRepositories
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
@@ -25,6 +27,8 @@ public class ElasticsearchConfig extends ElasticsearchConfiguration {
                 .connectedTo(host)
 //                .usingSsl()
                 .withBasicAuth(username, password)
+                .withConnectTimeout(Duration.ofSeconds(2))
+                .withSocketTimeout(Duration.ofSeconds(2))
                 .build();
     }
 }
