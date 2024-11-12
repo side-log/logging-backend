@@ -22,7 +22,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScreenLogDocument {
-    @Id
+//    @Id
     private String uuid;
     private String deviceId;
     private String userAgent;

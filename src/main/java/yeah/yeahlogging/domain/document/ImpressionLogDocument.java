@@ -17,7 +17,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ImpressionLogDocument {
-    @Id
+//    @Id
     private String uuid;
     private String deviceId;
     private String userAgent;
