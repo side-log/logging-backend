@@ -14,7 +14,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Document(indexName = "click_logs")
 public class ClickLogDocument {
-    @Id
+//    @Id
     private String uuid;
     private String deviceId;
     private String userAgent;
