@@ -1,31 +1,34 @@
 package yeah.yeahlogging.domain.document;
 
-import co.elastic.clients.util.DateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
 import yeah.yeahlogging.domain.ScreenLog;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-@Document(indexName = "screen_logs")
+@Document(indexName = "screen_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScreenLogDocument {
-//    @Id
+    @Id
+    @Field(type = FieldType.Keyword)
+    private String id;
+    @Field(type = FieldType.Keyword)
     private String uuid;
+    @Field(type = FieldType.Keyword)
     private String deviceId;
     private String userAgent;
+    @Field(type = FieldType.Keyword)
     private String referrer;
     private String os;
     private String locale;

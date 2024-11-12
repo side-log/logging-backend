@@ -3,21 +3,29 @@ package yeah.yeahlogging.domain.document;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
 import yeah.yeahlogging.domain.ClickLog;
 
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@Builder
+@Document(indexName = "click_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "click_logs")
 public class ClickLogDocument {
-//    @Id
+    @Id
+    @Field(type = FieldType.Keyword)
+    private String id;
+    @Field(type = FieldType.Keyword)
     private String uuid;
+    @Field(type = FieldType.Keyword)
     private String deviceId;
     private String userAgent;
+    @Field(type = FieldType.Keyword)
     private String referrer;
     private String os;
     private String locale;
