@@ -27,12 +27,16 @@ public class ImpressionLogDocument {
     private String uuid;
     @Field(type = FieldType.Keyword)
     private String deviceId;
+    @Field(type = FieldType.Text)
     private String userAgent;
     @Field(type = FieldType.Keyword)
     private String referrer;
+    @Field(type = FieldType.Text)
     private String os;
+    @Field(type = FieldType.Text)
     private String locale;
     private Map<String, Object> params;
+    @Field(type = FieldType.Date)
     private LocalDateTime createdDate;
 
     public static ImpressionLogDocument from(ImpressionLog impressionLog) {
