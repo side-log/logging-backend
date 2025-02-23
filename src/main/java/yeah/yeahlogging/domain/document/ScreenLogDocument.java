@@ -1,43 +1,27 @@
 package yeah.yeahlogging.domain.document;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
-import yeah.yeahlogging.domain.ScreenLog;
+import yeah.yeahlogging.domain.log.ScreenLog;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Document(indexName = "screen_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class ScreenLogDocument {
-    @Id
-    @Field(type = FieldType.Keyword)
-    private String id;
-    @Field(type = FieldType.Keyword)
-    private String uuid;
-    @Field(type = FieldType.Keyword)
-    private String deviceId;
-    @Field(type = FieldType.Text)
-    private String userAgent;
-    @Field(type = FieldType.Keyword)
-    private String referrer;
-    @Field(type = FieldType.Text)
-    private String os;
-    @Field(type = FieldType.Text)
-    private String locale;
-    private Map<String, Object> params;
-    @Field(type = FieldType.Date)
-    private LocalDateTime createdDate;
+@SuperBuilder
+public class ScreenLogDocument extends BaseLogDocument {
+
+    public ScreenLogDocument(ScreenLog screenLog) {
+        super(screenLog.getUuid(),
+                screenLog.getDeviceId(),
+                screenLog.getUserAgent(),
+                screenLog.getReferrer(),
+                screenLog.getOs(),
+                screenLog.getLocale(),
+                screenLog.getParams());
+    }
 
     public static ScreenLogDocument from(ScreenLog screenLog) {
         return ScreenLogDocument.builder()

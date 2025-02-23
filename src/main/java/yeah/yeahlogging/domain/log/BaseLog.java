@@ -1,19 +1,15 @@
-package yeah.yeahlogging.domain;
+package yeah.yeahlogging.domain.log;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.Map;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class ClickLog {
+public abstract class BaseLog {
     private String uuid;
     private String deviceId;
     private String userAgent;

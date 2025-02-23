@@ -4,25 +4,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Service;
-import yeah.yeahlogging.domain.ClickLog;
-import yeah.yeahlogging.domain.ImpressionLog;
-import yeah.yeahlogging.domain.ScreenLog;
+import yeah.yeahlogging.domain.log.ClickLog;
+import yeah.yeahlogging.domain.log.ImpressionLog;
+import yeah.yeahlogging.domain.log.ScreenLog;
 import yeah.yeahlogging.domain.document.ClickLogDocument;
 import yeah.yeahlogging.domain.document.ImpressionLogDocument;
 import yeah.yeahlogging.domain.document.ScreenLogDocument;
 import yeah.yeahlogging.dto.SaveLogRequest;
-import yeah.yeahlogging.respository.ClickLogRepository;
-import yeah.yeahlogging.respository.ImpressionLogRepository;
-import yeah.yeahlogging.respository.ScreenLogRepository;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class LogService {
-
-    private final ScreenLogRepository screenLogRepository;
-    private final ImpressionLogRepository impressionLogRepository;
-    private final ClickLogRepository clickLogRepository;
 
     private final ElasticsearchOperations elasticsearchOperations;
 
