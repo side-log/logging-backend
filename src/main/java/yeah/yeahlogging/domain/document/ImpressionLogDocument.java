@@ -3,6 +3,7 @@ package yeah.yeahlogging.domain.document;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -15,27 +16,18 @@ import java.util.Map;
 
 @Document(indexName = "impression_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
-@Builder
-@AllArgsConstructor
-public class ImpressionLogDocument {
-    @Id
-    @Field(type = FieldType.Keyword)
-    private String id;
-    @Field(type = FieldType.Keyword)
-    private String uuid;
-    @Field(type = FieldType.Keyword)
-    private String deviceId;
-    @Field(type = FieldType.Text)
-    private String userAgent;
-    @Field(type = FieldType.Keyword)
-    private String referrer;
-    @Field(type = FieldType.Text)
-    private String os;
-    @Field(type = FieldType.Text)
-    private String locale;
-    private Map<String, Object> params;
-    @Field(type = FieldType.Date)
-    private LocalDateTime createdDate;
+@SuperBuilder
+public class ImpressionLogDocument extends BaseLogDocument {
+
+    public ImpressionLogDocument(ImpressionLog impressionLog) {
+        super(impressionLog.getUuid(),
+                impressionLog.getDeviceId(),
+                impressionLog.getUserAgent(),
+                impressionLog.getReferrer(),
+                impressionLog.getOs(),
+                impressionLog.getLocale(),
+                impressionLog.getParams());
+    }
 
     public static ImpressionLogDocument from(ImpressionLog impressionLog) {
         return ImpressionLogDocument.builder()

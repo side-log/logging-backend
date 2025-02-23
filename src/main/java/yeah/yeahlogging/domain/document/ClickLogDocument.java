@@ -1,8 +1,10 @@
 package yeah.yeahlogging.domain.document;
 
+import co.elastic.clients.elasticsearch.xpack.usage.Base;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -15,27 +17,18 @@ import java.util.Map;
 
 @Document(indexName = "click_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
-@Builder
-@AllArgsConstructor
-public class ClickLogDocument {
-    @Id
-    @Field(type = FieldType.Keyword)
-    private String id;
-    @Field(type = FieldType.Keyword)
-    private String uuid;
-    @Field(type = FieldType.Keyword)
-    private String deviceId;
-    @Field(type = FieldType.Text)
-    private String userAgent;
-    @Field(type = FieldType.Keyword)
-    private String referrer;
-    @Field(type = FieldType.Text)
-    private String os;
-    @Field(type = FieldType.Text)
-    private String locale;
-    private Map<String, Object> params;
-    @Field(type = FieldType.Date)
-    private LocalDateTime createdDate;
+@SuperBuilder
+public class ClickLogDocument extends BaseLogDocument {
+
+    public ClickLogDocument(ClickLog clickLog) {
+        super(clickLog.getUuid(),
+                clickLog.getDeviceId(),
+                clickLog.getUserAgent(),
+                clickLog.getReferrer(),
+                clickLog.getOs(),
+                clickLog.getLocale(),
+                clickLog.getParams());
+    }
 
     public static ClickLogDocument from(ClickLog clickLog) {
         return ClickLogDocument.builder()
