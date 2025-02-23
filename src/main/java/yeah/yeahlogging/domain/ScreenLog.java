@@ -7,8 +7,6 @@ import java.util.Map;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class ScreenLog {
     private String uuid;
     private String deviceId;

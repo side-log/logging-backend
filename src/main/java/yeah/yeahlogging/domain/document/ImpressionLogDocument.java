@@ -17,7 +17,6 @@ import java.util.Map;
 @Document(indexName = "impression_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class ImpressionLogDocument {
     @Id

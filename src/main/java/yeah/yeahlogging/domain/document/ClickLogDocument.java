@@ -14,7 +14,6 @@ import java.util.Map;
 @Document(indexName = "click_logs", writeTypeHint = WriteTypeHint.FALSE)
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class ClickLogDocument {
     @Id

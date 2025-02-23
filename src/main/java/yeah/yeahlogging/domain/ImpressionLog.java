@@ -12,7 +12,6 @@ import java.util.Map;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class ImpressionLog {
     private String uuid;
     private String deviceId;

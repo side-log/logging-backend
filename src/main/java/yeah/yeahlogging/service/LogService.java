@@ -11,18 +11,11 @@ import yeah.yeahlogging.domain.document.ClickLogDocument;
 import yeah.yeahlogging.domain.document.ImpressionLogDocument;
 import yeah.yeahlogging.domain.document.ScreenLogDocument;
 import yeah.yeahlogging.dto.SaveLogRequest;
-import yeah.yeahlogging.respository.ClickLogRepository;
-import yeah.yeahlogging.respository.ImpressionLogRepository;
-import yeah.yeahlogging.respository.ScreenLogRepository;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class LogService {
-
-    private final ScreenLogRepository screenLogRepository;
-    private final ImpressionLogRepository impressionLogRepository;
-    private final ClickLogRepository clickLogRepository;
 
     private final ElasticsearchOperations elasticsearchOperations;
 
