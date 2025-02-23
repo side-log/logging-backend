@@ -3,13 +3,12 @@ package yeah.yeahlogging.domain.document;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.WriteTypeHint;
-import yeah.yeahlogging.domain.ScreenLog;
+import yeah.yeahlogging.domain.log.ScreenLog;
 
 import java.time.LocalDateTime;
 import java.util.Map;

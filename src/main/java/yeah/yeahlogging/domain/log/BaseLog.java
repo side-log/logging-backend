@@ -1,13 +1,15 @@
-package yeah.yeahlogging.domain;
+package yeah.yeahlogging.domain.log;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Map;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class ScreenLog {
+public abstract class BaseLog {
     private String uuid;
     private String deviceId;
     private String userAgent;
