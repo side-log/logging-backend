@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
-import org.springframework.data.elasticsearch.support.HttpHeaders;
 
 import java.time.Duration;
 
@@ -18,7 +17,7 @@ public class ElasticsearchConfig extends ElasticsearchConfiguration {
     @Value("${spring.elasticsearch.password}")
     private String password;
 
-    @Value("${spring.elasticsearch.host}")
+    @Value("${spring.elasticsearch.uris}")
     private String host;
 
     @Override
