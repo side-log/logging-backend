@@ -36,7 +36,7 @@ public abstract class BaseLogDocument {
 
     private Map<String, Object> params;
 
-    @Field(type = FieldType.Date)
+    @Field(type = FieldType.Date, format = {}, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS||epoch_millis")
     private LocalDateTime createdDate;
 
     protected BaseLogDocument(String uuid, String deviceId, String userAgent, String referrer, String os, String locale, Map<String, Object> params) {
